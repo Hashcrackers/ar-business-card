@@ -12,16 +12,28 @@
       <a-entity mindar-image-target="targetIndex: 0">
         <a-text value="Creative Developer" color="#FFD700" position="0 0.5 0.1" align="center" width="2"></a-text>
         
-        <a-plane id="call-btn" class="clickable" position="0 -0.6 0.1" width="0.7" height="0.2" color="#FFD700"
-                 text="value: CALL SIDDHESHWAR; align: center; color: #000; width: 1.5">
+        <a-plane id="call-btn" class="clickable" position="-0.35 -0.6 0.1" width="0.6" height="0.15" color="#FFD700"
+                 text="value: CALL; align: center; color: #000; width: 1.5">
+        </a-plane>
+
+        <a-plane id="email-btn" class="clickable" position="0.35 -0.6 0.1" width="0.6" height="0.15" color="#FFD700"
+                 text="value: EMAIL; align: center; color: #000; width: 1.5">
         </a-plane>
       </a-entity>
     </a-scene>
 
     <script>
+      // Call logic
       const callBtn = document.querySelector('#call-btn');
       callBtn.addEventListener("click", event => {
         window.location.href = "tel:+919226832281";
+      });
+
+      // Email logic
+      const emailBtn = document.querySelector('#email-btn');
+      emailBtn.addEventListener("click", event => {
+        // This opens the user's default email app
+        window.location.href = "mailto:siddheshwarchoudhari025@gmail.com?subject=Inquiry from AR Business Card";
       });
     </script>
   </body>
