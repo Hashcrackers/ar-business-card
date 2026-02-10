@@ -7,35 +7,46 @@
   </head>
   <body>
     <a-scene mindar-image="imageTargetSrc: ./targets.mind;" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
-      <a-camera position="0 0 0" look-controls="enabled: false" cursor="fuse: false; rayOrigin: mouse;" raycaster="objects: .clickable"></a-camera>
+  <a-camera position="0 0 0" look-controls="enabled: false">
+    <a-entity cursor="fuse: false; rayOrigin: mouse;"
+              raycaster="objects: .clickable"
+              position="0 0 -1"
+              geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03"
+              material="color: black; shader: flat">
+    </a-entity>
+  </a-camera>
 
-      <a-entity mindar-image-target="targetIndex: 0">
-        <a-text value="Creative Developer" color="#FFD700" position="0 0.5 0.1" align="center" width="2"></a-text>
-        
-        <a-plane id="call-btn" class="clickable" position="-0.4 -0.6 0.1" width="0.5" height="0.15" color="#FFD700"
-                 text="value: CALL; align: center; color: #000; width: 1.5">
-        </a-plane>
+  <a-entity mindar-image-target="targetIndex: 0">
+    <a-text value="Creative Developer" color="#FFD700" position="0 0.5 0.1" align="center" width="2"></a-text>
+    
+    <a-plane id="call-btn" class="clickable" position="-0.3 -0.6 0.2" width="0.4" height="0.15" color="#FFD700">
+        <a-text value="CALL" align="center" color="#000" width="1.5" position="0 0 0.01"></a-text>
+    </a-plane>
 
-        <a-plane id="email-btn" class="clickable" position="0.4 -0.6 0.1" width="0.5" height="0.15" color="#FFD700"
-                 text="value: EMAIL; align: center; color: #000; width: 1.5">
-        </a-plane>
-      </a-entity>
-    </a-scene>
+    <a-plane id="email-btn" class="clickable" position="0.3 -0.6 0.2" width="0.4" height="0.15" color="#FFD700">
+        <a-text value="EMAIL" align="center" color="#000" width="1.5" position="0 0 0.01"></a-text>
+    </a-plane>
+  </a-entity>
+</a-scene>
 
     <script>
-      // Call logic
-      const callBtn = document.querySelector('#call-btn');
-      callBtn.addEventListener("click", event => {
-        window.location.href = "tel:+919226832281";
-      });
+  // Ensure the scene has loaded before attaching listeners
+  document.querySelector('a-scene').addEventListener('loaded', function () {
+    const callBtn = document.querySelector('#call-btn');
+    const emailBtn = document.querySelector('#email-btn');
 
-      // Email logic
-      const emailBtn = document.querySelector('#email-btn');
-      emailBtn.addEventListener("click", event => {
-        // This opens the user's default email app
-        window.location.href = "mailto:siddheshwarchoudhari025@gmail.com?subject=Inquiry from AR Business Card";
-      });
-    </script>
+    callBtn.addEventListener("click", () => {
+      console.log("Call button clicked");
+      window.location.href = "tel:+919226832281";
+    });
+
+    emailBtn.addEventListener("click", () => {
+      console.log("Email button clicked");
+      window.location.href = "mailto:siddheshwarchoudhari025@gmail.com";
+    });
+  });
+</script>
   </body>
 </html>
+
 
